@@ -9,7 +9,7 @@ const Home = () => {
       <div className="md:col-span-1 xl:col-span-1 ">
         <TradingViewWidget
         title="Market Overview"
-        scriptUrl={`${scriptUrl}market-overview.js`}config={MARKET_OVERVIEW_WIDGET_CONFIG} className="custom-chart" height={600}/>
+        scriptUrl={`${scriptUrl}market-overview.js`} config={MARKET_OVERVIEW_WIDGET_CONFIG} className="custom-chart" height={600}/>
 
       </div>
       <div className="md-col-span xl:col-span-2">
@@ -24,7 +24,7 @@ const Home = () => {
       <div className="md:col-span-1 xl:col-span-1 ">
         <TradingViewWidget
        
-        scriptUrl={`${scriptUrl}timeline.js`}config={TOP_STORIES_WIDGET_CONFIG} className="custom-chart" height={600}/>
+        scriptUrl={`${scriptUrl}timeline.js`} config={TOP_STORIES_WIDGET_CONFIG} className="custom-chart" height={600}/>
 
       </div>
       <div className="h-full md:col-span-1 xl:col-span-2">
