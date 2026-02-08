@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:db": "node --env-file .env database/test-db.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -15,6 +16,8 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "lucide-react": "^0.563.0",
+    "mongodb": "^7.1.0",
+    "mongoose": "^9.1.6",
     "next": "16.1.6",
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
