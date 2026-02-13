@@ -6,11 +6,17 @@ import InputField from "@/components/forms/inputfield";
 import SelectField from "@/components/forms/SelectField";
 import { Button } from "@/components/ui/button";
 import { INVESTMENT_GOALS, PREFERRED_INDUSTRIES, RISK_TOLERANCE_OPTIONS } from "@/lib/constants";
+
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { signUpWithEmail } from "@/lib/actions/auth.actions";
+import { toast } from "sonner";
 
 
 
 const SignUp= () => {
+
+  const router=useRouter();
  
   const{
     register,
@@ -33,11 +39,28 @@ const SignUp= () => {
   const onSubmit=async(data:SignUpFormData)=>
   {
     try{
-      console.log(data);
+  
+    const result= await signUpWithEmail(data);
+    console.log("RESULT:", result);
+
+    if (!result.success) {
+      toast.error(result.error);
+      return;
+    }
+
+    if(result.success){
+      router.push('/');
+    }
+ 
 
     }catch(e){
-      console.error(e);
+     toast.error('Sign up failed',{
+      description:e instanceof Error ? e.message :'Failed to create an account'
+     })
     }
+
+
+
   }
   return (
    <>
@@ -77,7 +100,7 @@ const SignUp= () => {
     required/>
     
     <SelectField
-    name="investment Goals"
+    name="investmentGoals"
     label="Investment Goals"
     placeholder="Select your investment goal"
     options={INVESTMENT_GOALS}
@@ -95,7 +118,7 @@ const SignUp= () => {
     required
     />
     <SelectField
-    name="preferred Industry"
+    name="preferredIndustry"
     label="Preferred Industry"
     placeholder="Select your investment goal"
     options={PREFERRED_INDUSTRIES}

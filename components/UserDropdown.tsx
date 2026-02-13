@@ -14,14 +14,21 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useRouter } from "next/navigation"
 import { LogOut } from "lucide-react";
 import NavItems from "./Navitems";
+import { signOut as signOutAction } from "@/lib/actions/auth.actions";
 
-const UserDropdown = () => {
-const router=useRouter();
-const handleSignout=async()=>{
-  router.push("/sign-in");
-}
+const UserDropdown = ({ user }: { user: User }) => {
 
-const user={name:'john',email:'contact@signalist.com'};
+  const router = useRouter();
+  const handleSignout = async () => {
+    await signOutAction();
+    router.push("/sign-in");
+  }
+
+  const displayName = user?.name?.trim() || "User";
+  const displayEmail = user?.email?.trim() || "";
+  const fallbackInitial = displayName[0]?.toUpperCase() || "?";
+
+
   return (
    <DropdownMenu>
   <DropdownMenuTrigger asChild>
@@ -30,13 +37,13 @@ const user={name:'john',email:'contact@signalist.com'};
       <Avatar className="h-8 w-8">
   <AvatarImage src="https://github.com/shadcn.png" />
   <AvatarFallback className="bg-yellow-500 text-yellow-900 text-sm font-bold">
-    {user.name[0]}
+    {fallbackInitial}
   </AvatarFallback>
 </Avatar>
 
 <div className="hidden md:flex flex-col items-start">
   <span className="text-base font-medium text-gray-400">
-    {user.name}
+    {displayName}
   </span>
 </div>
     </Button>
@@ -48,15 +55,17 @@ const user={name:'john',email:'contact@signalist.com'};
       <Avatar className="h-10 w-10">
   <AvatarImage src="https://github.com/shadcn.png" />
   <AvatarFallback className="bg-yellow-500 text-yellow-900 text-sm font-bold">
-    {user.name[0]}
+    {fallbackInitial}
   </AvatarFallback>
 </Avatar>
 
 <div className="flex flex-col">
   <span className="text-base font-medium text-gray-400">
-    {user.name}
+    {displayName}
   </span>
-  <span className="texts-m text-gray-500">{user.email}</span>
+  {displayEmail ? (
+    <span className="texts-m text-gray-500">{displayEmail}</span>
+  ) : null}
 </div>
 
     </div>
