@@ -9,3 +9,12 @@ export async function POST() {
 
   return NextResponse.json({ ok: true });
 }
+
+export async function GET() {
+  await inngest.send({
+    name: "app/send.daily.news",
+    data: { source: "manual-get" },
+  });
+
+  return NextResponse.json({ ok: true });
+}
