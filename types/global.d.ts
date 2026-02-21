@@ -68,6 +68,9 @@ declare global {
     };
 
     type User = {
+        image: string;
+        role: string;
+        plan: any;
         id: string;
         name: string;
         email: string;
