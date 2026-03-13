@@ -16,7 +16,7 @@ async function main() {
   }
 
   const inngest = new Inngest({
-    id: 'Tradexx',
+    id: 'Stockix',
     eventKey,
   });
 

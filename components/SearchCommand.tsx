@@ -5,8 +5,8 @@ import { CommandDialog, CommandEmpty, CommandInput, CommandList } from "@/compon
 import {Button} from "@/components/ui/button";
 import {Loader2,  Star,  TrendingUp} from "lucide-react";
 import Link from "next/link";
-import {searchStocks} from "@/lib/actions/finnhub.actions";
 import {useDebounce} from "@/Hooks/useDebounce";
+import { searchStocks } from "@/lib/actions/finnhub.actions";
 
 export default function SearchCommand({ renderAs = 'button', label = 'Add stock', initialStocks }: SearchCommandProps) {
   const [open, setOpen] = useState(false)
@@ -34,7 +34,16 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
     setLoading(true)
     try {
         const results = await searchStocks(searchTerm.trim());
-        setStocks(results);
+        const mappedResults = results.map((stock: any) => ({
+          symbol: stock.symbol,
+          description: stock.description,
+          type: stock.type,
+          displaySymbol: stock.displaySymbol,
+          name: stock.displaySymbol || stock.symbol,
+          exchange: stock.exchange || '',
+          isInWatchlist: false
+        }));
+        setStocks(mappedResults);
     } catch {
       setStocks([])
     } finally {

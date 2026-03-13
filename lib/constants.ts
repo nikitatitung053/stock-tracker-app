@@ -2,12 +2,21 @@ export const Nav_Items=[
     {href:'/',label:'Dashboard'},
     {href:'/search',label:'Search'},
     {href:'/watchlist',label:'Watchlist'},
+
+//     {href:"/signals",label:"Signals"},
+// {href:"/admin",label:"Admin"},
+// {href:"/search",label:"Search"}
+ 
 ]
 
 export const NAV_ITEMS = [
     { href: '/', label: 'Dashboard' },
     { href: '/search', label: 'Search' },
     // { href: '/watchlist', label: 'Watchlist' },
+    { href: "/admin/signals", label: "Signals" },
+  { href: "/admin", label: "Admin" },
+
+  { href: "/search", label: "Search" }
 ];
 
 // Sign-up form select options
