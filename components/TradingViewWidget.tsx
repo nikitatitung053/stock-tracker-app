@@ -2,6 +2,7 @@
 import { memo} from 'react';
 import { cn } from '@/lib/utils';
 import useTradingViewWidget from '@/Hooks/UseTradingViewWidget';
+
 interface TradingViewWidgetProps{
     title?:string;
     scriptUrl:string;

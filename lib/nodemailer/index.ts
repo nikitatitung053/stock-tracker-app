@@ -21,9 +21,9 @@ export const sendWelcomeEmail=async({email,name,intro}:WelcomeEmailData)=>{
     .replace('{{intro}}',intro)
 
     const mailOptions={
-        from:`"Tradex" <Tradex@gmail.com>`,
+        from:`"Stockix" <Stockix@gmail.com>`,
         to:email,
-        subject:`Welcome to Tradex-your stock market toolkit is ready!`,
+        subject:`Welcome to Stockix-your stock market toolkit is ready!`,
         text:"Thanks for joining",
         html:htmlTemplate,
     }
@@ -40,10 +40,10 @@ export const sendNewsSummaryEmail = async (
         .replace('{{newsContent}}', newsContent);
 
     const mailOptions = {
-        from: `"Tradex News" <Tradex@gmail.com>`,
+        from: `"Stockix News" <Stockix@gmail.com>`,
         to: email,
         subject: `📈 Market News Summary Today - ${date}`,
-        text: `Today's market news summary from Tradex`,
+        text: `Today's market news summary from Stockix`,
         html: htmlTemplate,
     };
 
